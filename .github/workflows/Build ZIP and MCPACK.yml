@@ -19,42 +19,25 @@ jobs:
          exclusions: '*.git* ./build/ README.md report.txt'
 
      - name: Move to "build" directory
-       run: move /y D:\a\MCPE-Lunar-Client-Dot-Crosshair
-\MCPE-Lunar-Client-Dot-Crosshair
-\MCPE-Lunar-Client-Dot-Crosshair
-_latest.zip D:\a\MCPE-Lunar-Client-Dot-Crosshair
-\MCPE-Lunar-Client-Dot-Crosshair
-\build\
+       run: move /y D:\a\MCPE-Lunar-Client-Dot-Crosshair\MCPE-Lunar-Client-Dot-Crosshair\MCPE-Lunar-Client-Dot-Crosshair_latest.zip D:\a\MCPE-Lunar-Client-Dot-Crosshair\MCPE-Lunar-Client-Dot-Crosshair\build\
        shell: cmd
 
      - name: Build .MCPACK
-       run: copy /y D:\a\MCPE-Lunar-Client-Dot-Crosshair
-\MCPE-Lunar-Client-Dot-Crosshair
-\build\MCPE-Lunar-Client-Dot-Crosshair
-_latest.zip D:\a\MCPE-Lunar-Client-Dot-Crosshair
-\MCPE-Lunar-Client-Dot-Crosshair
-\build\MCPE-Lunar-Client-Dot-Crosshair
-_latest.mcpack
+       run: copy /y D:\a\MCPE-Lunar-Client-Dot-Crosshair\MCPE-Lunar-Client-Dot-Crosshair\build\MCPE-Lunar-Client-Dot-Crosshair_latest.zip D:\a\MCPE-Lunar-Client-Dot-Crosshair\MCPE-Lunar-Client-Dot-Crosshair\build\MCPE-Lunar-Client-Dot-Crosshair_latest.mcpack
        shell: cmd
        
      - name: Upload MCPE LC Dot Crosshair ZIP Build Artifact
        uses: actions/upload-artifact@v2
        with:
          name: MCPE-Lunar-Client-Dot-Crosshair_latest.zip
-         path: D:\a\MCPE-Lunar-Client-Dot-Crosshair
-\MCPE-Lunar-Client-Dot-Crosshair
-\build\MCPE-Lunar-Client-Dot-Crosshair
-_latest.zip
+         path: D:\a\MCPE-Lunar-Client-Dot-Crosshair\MCPE-Lunar-Client-Dot-Crosshair\build\MCPE-Lunar-Client-Dot-Crosshair_latest.zip
          
      - name: Upload MCPE LC Dot Crosshair MCPACK Build Artifact
        uses: actions/upload-artifact@v2
        with:
          name: MCPE-Lunar-Client-Dot-Crosshair_latest.mcpack
-         path: D:\a\MCPE-Lunar-Client-Dot-Crosshair
-\MCPE-Lunar-Client-Dot-Crosshair
-\build\MCPE-Lunar-Client-Dot-Crosshair
-_latest.mcpack
-       
+         path: D:\a\MCPE-Lunar-Client-Dot-Crosshair\MCPE-Lunar-Client-Dot-Crosshair\build\MCPE-Lunar-Client-Dot-Crosshair_latest.mcpack
+     
      - name: Commit report
        run: |
           git config --global user.name '${{ secrets.git_username }}'
