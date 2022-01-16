@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "§b§l Lunar Client Dot Crosshair Made by §aMinionguyjpro",
+    "min_engine_version": [
+      1,
+      16,
+      20
+    ],
+    "name": "Lunar Client Dot Crosshair",
+    "uuid": "2ff0cddd-ffa9-4883-b754-86b4ae5b1309",
+    "version": [
+      1,
+      0,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "description": "§b§l Lunar Client Dot Crosshair Made by §aMinionguyjpro",
+      "type": "resources",
+      "uuid": "3c9a4043-33a5-40a9-b382-dc52bcb5df3e",
+      "version": [
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}
