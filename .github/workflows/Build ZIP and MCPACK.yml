@@ -1,0 +1,64 @@
+name: Build a ZIP and MCPACK version
+
+on:
+  push:
+
+jobs:
+ build:
+    runs-on: windows-latest
+    steps:   
+     - uses: actions/checkout@v2
+     - name: Create report file
+       run: date +%s > report.txt
+    
+     - name: Build ZIP
+       uses: thedoctor0/zip-release@master
+       with:
+         type: 'zip'
+         filename: 'Sidebar_latest.zip'
+         exclusions: '*.git* ./build/ README.md report.txt'
+
+     - name: Move to "build" directory
+       run: move /y D:\a\MCPE-Lunar-Client-Dot-Crosshair
+\MCPE-Lunar-Client-Dot-Crosshair
+\MCPE-Lunar-Client-Dot-Crosshair
+_latest.zip D:\a\MCPE-Lunar-Client-Dot-Crosshair
+\MCPE-Lunar-Client-Dot-Crosshair
+\build\
+       shell: cmd
+
+     - name: Build .MCPACK
+       run: copy /y D:\a\MCPE-Lunar-Client-Dot-Crosshair
+\MCPE-Lunar-Client-Dot-Crosshair
+\build\MCPE-Lunar-Client-Dot-Crosshair
+_latest.zip D:\a\MCPE-Lunar-Client-Dot-Crosshair
+\MCPE-Lunar-Client-Dot-Crosshair
+\build\MCPE-Lunar-Client-Dot-Crosshair
+_latest.mcpack
+       shell: cmd
+       
+     - name: Upload MCPE LC Dot Crosshair ZIP Build Artifact
+       uses: actions/upload-artifact@v2
+       with:
+         name: MCPE-Lunar-Client-Dot-Crosshair_latest.zip
+         path: D:\a\MCPE-Lunar-Client-Dot-Crosshair
+\MCPE-Lunar-Client-Dot-Crosshair
+\build\MCPE-Lunar-Client-Dot-Crosshair
+_latest.zip
+         
+     - name: Upload MCPE LC Dot Crosshair MCPACK Build Artifact
+       uses: actions/upload-artifact@v2
+       with:
+         name: MCPE-Lunar-Client-Dot-Crosshair_latest.mcpack
+         path: D:\a\MCPE-Lunar-Client-Dot-Crosshair
+\MCPE-Lunar-Client-Dot-Crosshair
+\build\MCPE-Lunar-Client-Dot-Crosshair
+_latest.mcpack
+       
+     - name: Commit report
+       run: |
+          git config --global user.name '${{ secrets.git_username }}'
+          git config --global user.email '${{ secrets.git_email }}'
+          git add -A
+          git commit -am "Made new build"
+          git push         
