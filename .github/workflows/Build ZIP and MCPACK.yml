@@ -45,4 +45,4 @@ jobs:
           git init
           git add -A
           git commit -am "Made new build"
-          git push -u origin master         
+          git push -u origin main         
