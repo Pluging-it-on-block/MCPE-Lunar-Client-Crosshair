@@ -26,5 +26,12 @@
         1
       ]
     }
-  ]
+  ],
+  "subpacks": [
+  {  
+     "folder_name": "crosshair0",
+     "name": "Dot Crosshair",
+     "memory_tier": 1
+     }
+  ]    
 }
