@@ -1,2 +1,2 @@
-# MCPE-Lunar-Client-Dot-Crosshair
-The Lunar Client Dot Crosshair for MCPE!
+# MCPE-Lunar-Client-Crosshair
+The Lunar Client Crosshairs for MCPE!
