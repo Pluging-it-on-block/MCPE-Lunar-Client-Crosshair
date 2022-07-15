@@ -50,8 +50,18 @@
   },
   {
      "folder_name": "crosshair4",
-     "name": " LC Crosshair : Arrow",
+     "name": "LC Crosshair : Arrow",
      "memory_tier": 0
-    }  
+  },
+  {
+     "folder_name": "crosshair5",
+     "name": "LC Crosshair : Circle",
+     "memory_tier": 0
+  },
+  {
+     "folder_name": "crosshair6",
+     "name": "LC Crosshair : Circle With Dot",
+     "memory_tier": 0
+    }
   ]
 }
