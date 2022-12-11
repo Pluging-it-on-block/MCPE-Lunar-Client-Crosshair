@@ -46,7 +46,9 @@ jobs:
           git add -A
           git commit -am "Made new build"
           git push -u origin ${{ github.ref_name }}         
-          
+ publish: 
+    runs-on: ubuntu-latest
+    steps:
      - name: "Upload to CurseForge"
        uses: itsmeow/curseforge-upload@v3
        with:
