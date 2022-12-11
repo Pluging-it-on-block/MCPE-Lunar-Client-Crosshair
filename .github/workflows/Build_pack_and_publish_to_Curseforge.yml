@@ -1,8 +1,8 @@
 name: Build a ZIP and MCPACK version
 
 on:
-  push:
-
+  push
+  
 jobs:
  build:
     runs-on: windows-latest
@@ -49,6 +49,13 @@ jobs:
  publish: 
     runs-on: ubuntu-latest
     steps:
+     - name: Wait for build to succeed
+       uses: fountainhead/action-wait-for-check@v1.1.0
+       id: wait-for-build
+       with:
+         token: ${{ secrets.GITHUB_TOKEN }}
+         checkName: build
+         ref: ${{ github.event.pull_request.head.sha || github.sha }}
      - name: "Upload to CurseForge"
        uses: itsmeow/curseforge-upload@v3
        with:
