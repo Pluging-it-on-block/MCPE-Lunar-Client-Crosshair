@@ -46,3 +46,13 @@ jobs:
           git add -A
           git commit -am "Made new build"
           git push -u origin main         
+          
+     - name: "Upload to CurseForge"
+       uses: itsmeow/curseforge-upload@v3
+       with:
+          file_path: "build/MCPE-Lunar-Client-Crosshair_latest.mcpack"
+          game_endpoint: "minecraft-bedrock"
+          relations: ""
+          game_versions: ""
+          project_id: "641472"
+          token: "${{ secrets.CF_API_TOKEN }}"
