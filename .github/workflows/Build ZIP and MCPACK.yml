@@ -45,4 +45,4 @@ jobs:
           git init
           git add -A
           git commit -am "Made new build"
-          git push -u origin main         
+          git push -u origin ${{ github.ref_name }}
