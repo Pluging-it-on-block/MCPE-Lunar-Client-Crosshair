@@ -29,13 +29,13 @@ jobs:
      - name: Upload MCPE LC Crosshair ZIP Build Artifact
        uses: actions/upload-artifact@v2
        with:
-         name: MCPE-Lunar-Client-Crosshair_latest.zip
+         name: MCPE Lunar Client Crosshair
          path: D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.zip
          
      - name: Upload MCPE LC Crosshair MCPACK Build Artifact
        uses: actions/upload-artifact@v2
        with:
-         name: MCPE-Lunar-Client-Crosshair_latest.mcpack
+         name: MCPE Lunar Client Crosshair
          path: D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.mcpack
      
      - name: Commit report
