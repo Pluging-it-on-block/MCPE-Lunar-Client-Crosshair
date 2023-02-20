@@ -1,6 +1,6 @@
 targets:
   - name: Translations
     sources:
-      - '*.json'
+      - manifest.json
     file: /languages/%two_letters_code%/manifest.json
     format: xliff
