@@ -1,4 +1,4 @@
-name: Build a ZIP and MCPACK version
+name: Build a ZIP and MCPACK version and publish to CurseForge
 
 on:
   push
@@ -7,7 +7,7 @@ jobs:
  build:
     runs-on: windows-latest
     steps:   
-     - uses: actions/checkout@v2
+     - uses: actions/checkout@v3
      - name: Create report file
        run: date +%s > report.txt
     
@@ -59,7 +59,7 @@ jobs:
      - name: "Upload to CurseForge"
        uses: itsmeow/curseforge-upload@v3
        with:
-          file_path: "build/MCPE-Lunar-Client-Crosshair_latest.mcpack"
+          file_path: "./build/MCPE-Lunar-Client-Crosshair_latest.mcpack"
           game_endpoint: "minecraft-bedrock"
           relations: ""
           game_versions: ""
