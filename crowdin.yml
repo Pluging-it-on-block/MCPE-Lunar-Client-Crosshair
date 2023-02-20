@@ -2,5 +2,5 @@ targets:
   - name: Translations
     sources:
       - '*.json'
-    file: /languages/%two_letters_code%/%original_file_name%
+    file: /languages/%two_letters_code%/manifest.json
     format: xliff
