@@ -1,7 +1,7 @@
 {
   "format_version": 2,
   "header": {
-    "description": "§b§l MCPE Lunar Client Crosshairs Made by §aMinionguyjpro",
+    "description": "§b§l MCPE Lunar Client Crosshairs gemaakt door §aMinionguyjpro",
     "min_engine_version": [
       1,
       16,
@@ -17,7 +17,7 @@
   },
   "modules": [
     {
-      "description": "§b§l MCPE Lunar Client Crosshairs Made by §aMinionguyjpro",
+      "description": "§b§l MCPE Lunar Client Crosshairs gemaakt door §aMinionguyjpro",
       "type": "resources",
       "uuid": "3c9a4043-33a5-40a9-b382-dc52bcb5df3e",
       "version": [
@@ -30,37 +30,37 @@
   "subpacks": [
     {
       "folder_name": "crosshair0",
-      "name": "LC Crosshair: Cross",
+      "name": "LC Crosshair: Kruis",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair1",
-      "name": "LC Crosshair: Cross With Dot",
+      "name": "LC Crosshair: Kruis Met Punt",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair2",
-      "name": "LC Crosshair: Cubic",
+      "name": "LC Crosshair: Kubiek",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair3",
-      "name": "LC Crosshair: Cubic With Dot",
+      "name": "LC Crosshair: Kubiek Met Punt",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair4",
-      "name": "LC Crosshair : Arrow",
+      "name": "LC Crosshair: Pijl",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair5",
-      "name": "LC Crosshair : Circle",
+      "name": "LC Crosshair: Cirkel",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair6",
-      "name": "LC Crosshair : Circle With Dot",
+      "name": "LC Crosshair: Cirkel Met Punt",
       "memory_tier": 0
     }
   ]
