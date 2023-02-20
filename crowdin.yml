@@ -1,0 +1,6 @@
+targets:
+  - name: Translations
+    sources:
+      - '*.json'
+    file: /languages/%two_letters_code%/%original_file_name%
+    format: xliff
