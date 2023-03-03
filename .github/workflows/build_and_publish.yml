@@ -5,12 +5,25 @@ on:
   
 jobs:
  build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:   
-     - uses: actions/checkout@v3
+     - name: Clone repository
+       uses: actions/checkout@v3
+    
      - name: Create report file
        run: date +%s > report.txt
     
+     - name: Set variables
+       run: |
+         cp "information.txt" tmp.txt
+         sed -i '2d' information.txt
+         VERSION=$(sed 's/version: //g' information.txt)
+         cp "tmp.txt" information.txt
+         sed -i '1d' information.txt
+         ISDONE=$(sed 's/done: //g' information.txt)
+         rm information.txt tmp.txt
+         echo "VERSION=$VERSION" >> $GITHUB_ENV
+         echo "ISDONE=$ISDONE" >> $GITHUB_ENV
      - name: Build ZIP
        uses: thedoctor0/zip-release@master
        with:
@@ -19,24 +32,24 @@ jobs:
          exclusions: '*.git* ./build/ README.md report.txt'
 
      - name: Move to "build" directory
-       run: move /y D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair_latest.zip D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\
-       shell: cmd
+       run: mv ./MCPE-Lunar-Client-Crosshair_latest.zip ./build/
+       shell: bash
 
      - name: Build .MCPACK
-       run: copy /y D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.zip D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.mcpack
-       shell: cmd
+       run: cp ./build/MCPE-Lunar-Client-Crosshair_latest.zip ./build/MCPE-Lunar-Client-Crosshair_latest.mcpack
+       shell: bash
        
      - name: Upload MCPE LC Crosshair ZIP Build Artifact
        uses: actions/upload-artifact@v2
        with:
          name: MCPE-Lunar-Client-Crosshair_latest.zip
-         path: D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.zip
+         path: ./build/MCPE-Lunar-Client-Crosshair_latest.zip
          
      - name: Upload MCPE LC Crosshair MCPACK Build Artifact
        uses: actions/upload-artifact@v2
        with:
          name: MCPE-Lunar-Client-Crosshair_latest.mcpack
-         path: D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.mcpack
+         path: ./build/MCPE-Lunar-Client-Crosshair_latest.mcpack
      
      - name: Commit report
        run: |
@@ -45,7 +58,12 @@ jobs:
           git init
           git add -A
           git commit -am "Made new build"
-          git push -u origin ${{ github.ref_name }}         
+          git push -u origin ${{ github.ref_name }}
+     - name: Rename ZIP and MCPACK file
+       run: |
+         mv "MCPE-Lunar-Client-Crosshair_latest.zip" MCPE-Lunar-Client-Crosshair_$VERSION.zip 
+         mv "MCPE-Lunar-Client-Crosshair_latest.mcpack" MCPE-Lunar-Client-Crosshair_$VERSION.mcpack 
+       
  publish: 
     needs: build
     runs-on: ubuntu-latest
@@ -56,9 +74,10 @@ jobs:
      - name: "Upload to CurseForge"
        uses: itsmeow/curseforge-upload@v3
        with:
-          file_path: "./build/MCPE-Lunar-Client-Crosshair_latest.mcpack"
+          file_path: "./build/MCPE-Lunar-Client-Crosshair_${{ env.VERSION }}.mcpack"
           game_endpoint: "minecraft-bedrock"
           relations: ""
           game_versions: ""
           project_id: "641472"
           token: "${{ secrets.CF_API_TOKEN }}"
+       if: (env.ISDONE == 'true') && (github.ref_name == 'main')
