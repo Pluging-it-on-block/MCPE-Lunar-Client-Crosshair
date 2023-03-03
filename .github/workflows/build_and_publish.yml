@@ -61,8 +61,8 @@ jobs:
           git push -u origin ${{ github.ref_name }}
      - name: Rename ZIP and MCPACK file
        run: |
-         mv "MCPE-Lunar-Client-Crosshair_latest.zip" MCPE-Lunar-Client-Crosshair_$VERSION.zip 
-         mv "MCPE-Lunar-Client-Crosshair_latest.mcpack" MCPE-Lunar-Client-Crosshair_$VERSION.mcpack 
+         mv "./build/MCPE-Lunar-Client-Crosshair_latest.zip" ./build/MCPE-Lunar-Client-Crosshair_$VERSION.zip 
+         mv "./build/MCPE-Lunar-Client-Crosshair_latest.mcpack" ./build/MCPE-Lunar-Client-Crosshair_$VERSION.mcpack 
        
  publish: 
     needs: build
