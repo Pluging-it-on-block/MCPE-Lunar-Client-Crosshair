@@ -21,7 +21,8 @@ jobs:
          cp "tmp.txt" information.txt
          sed -i '1d' information.txt
          ISDONE=$(sed 's/done: //g' information.txt)
-         rm information.txt tmp.txt
+         cp "tmp.txt" information.txt
+         rm tmp.txt
          echo "VERSION=$VERSION" >> $GITHUB_ENV
          echo "ISDONE=$ISDONE" >> $GITHUB_ENV
      - name: Build ZIP
