@@ -1,13 +1,13 @@
 {
   "format_version": 2,
   "header": {
-    "description": "§b§l MCPE Lunar Client Crosshairs Made by §aMinionguyjpro",
+    "description": "§b§l MCPE Viseurs Lunar Client Fait par §aMinionguyjpro",
     "min_engine_version": [
       1,
       16,
       20
     ],
-    "name": "MCPE Lunar Client Crosshair",
+    "name": "MCPE Viseurs Lunar Client",
     "uuid": "2ff0cddd-ffa9-4883-b754-86b4ae5b1309",
     "version": [
       1,
@@ -17,7 +17,7 @@
   },
   "modules": [
     {
-      "description": "§b§l MCPE Lunar Client Crosshairs Made by §aMinionguyjpro",
+      "description": "§b§l MCPE Viseurs Lunar Client Fait par §aMinionguyjpro",
       "type": "resources",
       "uuid": "3c9a4043-33a5-40a9-b382-dc52bcb5df3e",
       "version": [
@@ -30,37 +30,37 @@
   "subpacks": [
     {
       "folder_name": "crosshair0",
-      "name": "LC Crosshair: Cross",
+      "name": "Viseur LC: Croix",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair1",
-      "name": "LC Crosshair: Cross With Dot",
+      "name": "Viseur LC: Croix À Pointillés",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair2",
-      "name": "LC Crosshair: Cubic",
+      "name": "Viseur LC: Cube",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair3",
-      "name": "LC Crosshair: Cubic With Dot",
+      "name": "Viseur LC: Cube À Pointillés",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair4",
-      "name": "LC Crosshair : Arrow",
+      "name": "LC Crosshair: Flèche",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair5",
-      "name": "LC Crosshair : Circle",
+      "name": "LC Crosshair: Cercle",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair6",
-      "name": "LC Crosshair : Circle With Dot",
+      "name": "LC Crosshair: Cercle À Pointillés",
       "memory_tier": 0
     }
   ]
