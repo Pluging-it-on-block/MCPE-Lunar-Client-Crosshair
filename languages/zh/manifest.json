@@ -1,7 +1,7 @@
 {
   "format_version": 2,
   "header": {
-    "description": "§b§l MCPE Lunar Client Crosshairs Made by §aMinionguyjpro",
+    "description": "§b§l MCPE Lunar Client Crosshairs 开发者为 §aMinionguyjpro",
     "min_engine_version": [
       1,
       16,
@@ -17,7 +17,7 @@
   },
   "modules": [
     {
-      "description": "§b§l MCPE Lunar Client Crosshairs Made by §aMinionguyjpro",
+      "description": "§b§l MCPE Lunar Client Crosshairs 开发者为 §aMinionguyjpro",
       "type": "resources",
       "uuid": "3c9a4043-33a5-40a9-b382-dc52bcb5df3e",
       "version": [
@@ -30,37 +30,37 @@
   "subpacks": [
     {
       "folder_name": "crosshair0",
-      "name": "LC Crosshair: Cross",
+      "name": "LC Crosshair: 十字",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair1",
-      "name": "LC Crosshair: Cross With Dot",
+      "name": "LC Crosshair: 带点的十字",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair2",
-      "name": "LC Crosshair: Cubic",
+      "name": "LC Crosshair: 立方体",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair3",
-      "name": "LC Crosshair: Cubic With Dot",
+      "name": "LC Crosshair: 带点立方体",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair4",
-      "name": "LC Crosshair : Arrow",
+      "name": "LC Crosshair : 箭",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair5",
-      "name": "LC Crosshair : Circle",
+      "name": "LC Crosshair : 圆圈",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair6",
-      "name": "LC Crosshair : Circle With Dot",
+      "name": "LC Crosshair : 带点的圆圈",
       "memory_tier": 0
     }
   ]
