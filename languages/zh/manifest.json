@@ -1,13 +1,13 @@
 {
   "format_version": 2,
   "header": {
-    "description": "§b§l MCPE Lunar Client Crosshairs 开发者为 §aMinionguyjpro",
+    "description": "§b§l MCPE Lunar Client 自定义准星的开发者为 §aMinionguyjpro",
     "min_engine_version": [
       1,
       16,
       20
     ],
-    "name": "MCPE Lunar Client Crosshair",
+    "name": "MCPE Lunar Client 自定义准星",
     "uuid": "2ff0cddd-ffa9-4883-b754-86b4ae5b1309",
     "version": [
       1,
@@ -17,7 +17,7 @@
   },
   "modules": [
     {
-      "description": "§b§l MCPE Lunar Client Crosshairs 开发者为 §aMinionguyjpro",
+      "description": "§b§l MCPE Lunar Client 自定义准星的开发者为 §aMinionguyjpro",
       "type": "resources",
       "uuid": "3c9a4043-33a5-40a9-b382-dc52bcb5df3e",
       "version": [
@@ -30,37 +30,37 @@
   "subpacks": [
     {
       "folder_name": "crosshair0",
-      "name": "LC Crosshair: 十字",
+      "name": "LC 自定义准星: 十字",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair1",
-      "name": "LC Crosshair: 带点的十字",
+      "name": "LC 自定义准星: 带点的十字",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair2",
-      "name": "LC Crosshair: 立方体",
+      "name": "LC 自定义准星: 立方体",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair3",
-      "name": "LC Crosshair: 带点立方体",
+      "name": "LC 自定义准星: 带点立方体",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair4",
-      "name": "LC Crosshair : 箭",
+      "name": "LC 自定义准星: 箭",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair5",
-      "name": "LC Crosshair : 圆圈",
+      "name": "LC 自定义准星: 圆圈",
       "memory_tier": 0
     },
     {
       "folder_name": "crosshair6",
-      "name": "LC Crosshair : 带点的圆圈",
+      "name": "LC 自定义准星: 带点的圆圈",
       "memory_tier": 0
     }
   ]
