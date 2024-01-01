@@ -45,24 +45,36 @@ jobs:
      - name: Build .MCPACK (other branches and pull request)
        run: cp MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.mcpack
        if: ${{ github.ref != 'refs/heads/main' }}
-       
-     - name: Upload MCPE LC Crosshair Build Artifacts
+
+     - name: Upload MCPE LC Crosshair Build Artifacts (main branch)
+       id: upload_main
        uses: actions/upload-artifact@v4
        with:
-         name: MCPE Lunar Client Crosshair
+         name: MCPE Lunar Client Crosshair (${{ github.ref_name }})
+         path: |
+           MCPE-Lunar-Client-Crosshair_${{ env.VERSION }}.zip
+           MCPE-Lunar-Client-Crosshair_${{ env.VERSION }}.mcpack
+       if: (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')
+           
+     - name: Upload MCPE LC Crosshair Build Artifacts (other branches and pull request)
+       id: upload_other
+       uses: actions/upload-artifact@v4
+       with:
+         name: MCPE Lunar Client Crosshair (${{ github.ref_name }})
          path: |
            MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip
            MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.mcpack
-
+       if: ${{ github.ref != 'refs/heads/main' }}
+       
  publish: 
     needs: build
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')
     runs-on: ubuntu-latest
     steps:
      - name: Download MCPE LC Crosshair Build Artifacts
        uses: actions/download-artifact@v4
        with:
-         name: MCPE Lunar Client Crosshair
+         name: ${{ needs.build.steps.upload_main.with.name }}
        
      - name: "Upload to CurseForge"
        uses: itsmeow/curseforge-upload@v3
@@ -74,4 +86,3 @@ jobs:
           project_id: "641472"
           token: "${{ secrets.CF_API_TOKEN }}"
        if: (env.ISDONE == 'true') && (github.ref == 'refs/heads/main')
-       
