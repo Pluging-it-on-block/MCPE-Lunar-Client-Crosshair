@@ -36,10 +36,15 @@ jobs:
          type: 'zip'
          filename: 'MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip'
          exclusions: '*.git* ./build/ README.md report.txt'
-       if: (github.ref != 'refs/heads/main')
+       if: ${{ github.ref != 'refs/heads/main' }}
 
-     - name: Build .MCPACK
+     - name: Build .MCPACK (main branch)
+       run: cp MCPE-Lunar-Client-Crosshair_${{ env.VERSION }}.zip MCPE-Lunar-Client-Crosshair_${{ env.VERSION }}.mcpack
+       if: (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')
+       
+     - name: Build .MCPACK (other branches and pull request)
        run: cp MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.mcpack
+       if: ${{ github.ref != 'refs/heads/main' }}
        
      - name: Upload MCPE LC Crosshair Build Artifacts
        uses: actions/upload-artifact@v4
