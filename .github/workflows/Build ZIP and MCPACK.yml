@@ -9,13 +9,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:   
      - uses: actions/checkout@v4
-    
-     - name: Build ZIP
+
+     - name: Set variables
+       run: |
+         cp "information.txt" tmp.txt
+         sed -i '2d' information.txt
+         VERSION=$(sed 's/version: //g' information.txt)
+         cp "tmp.txt" information.txt
+         sed -i '1d' information.txt
+         ISDONE=$(sed 's/done: //g' information.txt)
+         cp "tmp.txt" information.txt
+         rm tmp.txt
+         echo "VERSION=$VERSION" >> $GITHUB_ENV
+         
+     - name: Build ZIP (main branch)
+       uses: thedoctor0/zip-release@master
+       with:
+         type: 'zip'
+         filename: 'MCPE-Lunar-Client-Crosshair_${{ env.VERSION }}.zip'
+         exclusions: '*.git* ./build/ README.md report.txt'
+       if: (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')
+       
+     - name: Build ZIP (other branches and pull request)
        uses: thedoctor0/zip-release@master
        with:
          type: 'zip'
          filename: 'MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip'
          exclusions: '*.git* ./build/ README.md report.txt'
+       if: (github.ref != 'refs/heads/main')
 
      - name: Build .MCPACK
        run: cp MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.mcpack
@@ -27,3 +48,24 @@ jobs:
          path: |
            MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip
            MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.mcpack
+
+ publish: 
+    needs: build
+    if: (env.ISDONE == 'true') && (github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    steps:
+     - name: Download MCPE LC Crosshair Build Artifacts
+       uses: actions/download-artifact@v4
+       with:
+         name: MCPE Lunar Client Crosshair
+       
+     - name: "Upload to CurseForge"
+       uses: itsmeow/curseforge-upload@v3
+       with:
+          file_path: MCPE-Lunar-Client-Crosshair_${{ env.VERSION }}.mcpack
+          game_endpoint: "minecraft-bedrock"
+          relations: ""
+          game_versions: ""
+          project_id: "641472"
+          token: "${{ secrets.CF_API_TOKEN }}"
+       
