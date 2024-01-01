@@ -2,47 +2,28 @@ name: Build a ZIP and MCPACK version
 
 on:
   push:
+  pull_request:
 
 jobs:
  build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:   
-     - uses: actions/checkout@v2
-     - name: Create report file
-       run: date +%s > report.txt
+     - uses: actions/checkout@v4
     
      - name: Build ZIP
        uses: thedoctor0/zip-release@master
        with:
          type: 'zip'
-         filename: 'MCPE-Lunar-Client-Crosshair_latest.zip'
+         filename: 'MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip'
          exclusions: '*.git* ./build/ README.md report.txt'
 
-     - name: Move to "build" directory
-       run: move /y D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair_latest.zip D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\
-       shell: cmd
-
      - name: Build .MCPACK
-       run: copy /y D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.zip D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.mcpack
-       shell: cmd
+       run: cp MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.mcpack
        
-     - name: Upload MCPE LC Crosshair ZIP Build Artifact
-       uses: actions/upload-artifact@v2
+     - name: Upload MCPE LC Crosshair Build Artifacts
+       uses: actions/upload-artifact@v4
        with:
          name: MCPE Lunar Client Crosshair
-         path: D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.zip
-         
-     - name: Upload MCPE LC Crosshair MCPACK Build Artifact
-       uses: actions/upload-artifact@v2
-       with:
-         name: MCPE Lunar Client Crosshair
-         path: D:\a\MCPE-Lunar-Client-Crosshair\MCPE-Lunar-Client-Crosshair\build\MCPE-Lunar-Client-Crosshair_latest.mcpack
-     
-     - name: Commit report
-       run: |
-          git config --global user.name '${{ secrets.git_username }}'
-          git config --global user.email '${{ secrets.git_email }}'
-          git init
-          git add -A
-          git commit -am "Made new build"
-          git push -u origin ${{ github.ref_name }}
+         path: |
+           MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.zip
+           MCPE-Lunar-Client-Crosshair_${{ github.ref_name }}.mcpack
