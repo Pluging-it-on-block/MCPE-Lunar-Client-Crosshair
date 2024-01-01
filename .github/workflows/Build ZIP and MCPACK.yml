@@ -71,6 +71,20 @@ jobs:
     if: (github.ref == 'refs/heads/main') && (github.event_name != 'pull_request')
     runs-on: ubuntu-latest
     steps:
+     - uses: actions/checkout@v4
+     
+     - name: Set variables
+       run: |
+         cp "information.txt" tmp.txt
+         sed -i '2d' information.txt
+         VERSION=$(sed 's/version: //g' information.txt)
+         cp "tmp.txt" information.txt
+         sed -i '1d' information.txt
+         ISDONE=$(sed 's/done: //g' information.txt)
+         cp "tmp.txt" information.txt
+         rm tmp.txt
+         echo "VERSION=$VERSION" >> $GITHUB_ENV
+     
      - name: Download MCPE LC Crosshair Build Artifacts
        uses: actions/download-artifact@v4
        with:
