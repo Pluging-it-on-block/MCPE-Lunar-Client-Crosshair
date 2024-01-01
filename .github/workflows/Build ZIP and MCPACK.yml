@@ -84,6 +84,8 @@ jobs:
          cp "tmp.txt" information.txt
          rm tmp.txt
          echo "VERSION=$VERSION" >> $GITHUB_ENV
+         echo The version is ${{ env.VERSION }}!
+         echo And that the release is done is ${{ env.ISDONE }}.
      
      - name: Download MCPE LC Crosshair Build Artifacts
        uses: actions/download-artifact@v4
