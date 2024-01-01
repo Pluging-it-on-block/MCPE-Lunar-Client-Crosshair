@@ -51,7 +51,7 @@ jobs:
 
  publish: 
     needs: build
-    if: (env.ISDONE == 'true') && (github.ref == 'refs/heads/main')
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
      - name: Download MCPE LC Crosshair Build Artifacts
@@ -68,4 +68,5 @@ jobs:
           game_versions: ""
           project_id: "641472"
           token: "${{ secrets.CF_API_TOKEN }}"
+       if: (env.ISDONE == 'true') && (github.ref == 'refs/heads/main')
        
